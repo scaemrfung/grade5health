@@ -6,4 +6,6 @@ Weekly 30-minute Alberta Physical Education and Wellness lessons for Grade 5.
 
 Printable unit packets are on the home page and each unit page (Print packet or Download PDF).
 
-**Teacher answer keys (not for students):** https://scaemrfung.github.io/grade5health/pdfs/Grade5-Health-Teacher-Answer-Keys.pdf
+**Teacher answer keys (not for students):**
+- All 36 weeks: https://scaemrfung.github.io/grade5health/keys/
+- Combined PDF: https://scaemrfung.github.io/grade5health/pdfs/Grade5-Health-Teacher-Answer-Keys.pdf
