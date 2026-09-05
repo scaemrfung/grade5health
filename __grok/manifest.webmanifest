@@ -1,0 +1,17 @@
+{
+  "name": "Grade 5 Health",
+  "short_name": "Grade 5 Health",
+  "id": "/",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#F3F0E8",
+  "theme_color": "#245C45",
+  "icons": [
+    {
+      "src": "/__grok/icon-180.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}
