@@ -1,0 +1,14 @@
+/* Three-colour signature for Grade 5 Health: teal / rust / navy */
+:root {
+  --color-ok: #2f7d3a;
+  --color-ok-soft: #dcefdc;
+  --color-accent: #8b3a2a;
+  --color-highlight: #1b4a6b;
+}
+body::before {
+  content: "";
+  display: block;
+  height: 6px;
+  background: linear-gradient(90deg, #0f6b6b 0 34%, #8b3a2a 34% 67%, #1b4a6b 67% 100%);
+}
+@media print { body::before { display: none; } }
