@@ -98,7 +98,9 @@
   }
 
   let obs = null;
+  let booted = false; // no DOM changes until React has hydrated the page (avoids error #418)
   function watch() {
+    if (!booted) return;
     if (obs) obs.disconnect();
     inject();
     obs = new MutationObserver(() => inject());
@@ -122,15 +124,15 @@
   }
 
   function boot() {
-    patchHistory();
+    booted = true;
     watch();
     setTimeout(watch, 400);
     setTimeout(watch, 1200);
   }
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", boot);
-  } else {
-    boot();
-  }
+  patchHistory();
+  /* Start after the window load event plus a short pause, once React has hydrated. */
+  function later() { setTimeout(boot, 300); }
+  if (document.readyState === "complete") later();
+  else window.addEventListener("load", later);
 })();
