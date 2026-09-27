@@ -21,15 +21,25 @@
     return "Updated " + formatted + " MT";
   }
 
+  /* The page is React-hydrated over the whole document, so the stamp is added
+     only after hydration (see run() below) and put back if a re-render drops it. */
+  var stampText = "", watching = false;
   function mount(text) {
-    if (document.querySelector(".site-updated-stamp")) return;
+    if (text) stampText = text;
+    if (!stampText || document.querySelector(".site-updated-stamp")) return;
     var el = document.createElement("div");
     el.className = "site-updated-stamp no-print";
     el.setAttribute("aria-label", "Site last updated");
-    el.textContent = text;
+    el.textContent = stampText;
     var body = document.body;
     if (!body) return;
     body.insertBefore(el, body.firstChild);
+    if (!watching && window.MutationObserver) {
+      watching = true;
+      new MutationObserver(function () {
+        if (!document.querySelector(".site-updated-stamp")) mount();
+      }).observe(body, { childList: true });
+    }
   }
 
   function apply(iso) {
@@ -58,9 +68,9 @@
       .catch(fallback);
   }
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", run);
-  } else {
-    run();
-  }
+  /* Wait for the window load event plus a short pause so React has finished
+     hydrating; adding DOM earlier causes a hydration mismatch (React error #418). */
+  function later() { setTimeout(run, 400); }
+  if (document.readyState === "complete") later();
+  else window.addEventListener("load", later);
 })();

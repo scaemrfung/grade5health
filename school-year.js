@@ -259,6 +259,9 @@
     new MutationObserver(soon).observe(document.body, { childList: true, subtree: true });
     window.addEventListener("popstate", soon);
   }
-  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start); else start();
+  /* Start after React has hydrated the page (window load + a short pause).
+     Adding the date line earlier makes React's hydration fail (error #418). */
+  function later() { setTimeout(start, 300); }
+  if (document.readyState === "complete") later(); else window.addEventListener("load", later);
 
 })(typeof window !== "undefined" ? window : null);
