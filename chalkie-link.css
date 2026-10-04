@@ -1,0 +1,7 @@
+/* "Open this lesson in Chalkie" button on weekly lesson pages (data: chalkie-links.json) */
+.chalkie-link { margin: 12px 0 0; }
+.chalkie-link-a { display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 8px 16px; border-radius: 999px; border: 1px solid var(--color-primary, #0f6b6b); background: var(--color-primary, #0f6b6b); color: var(--color-primary-fg, #fff); font-weight: 700; font-size: 14.5px; line-height: 1.2; text-decoration: none; }
+.chalkie-link-a:hover { filter: brightness(1.12); text-decoration: none; }
+.chalkie-link-a:focus-visible { outline: 2px solid var(--color-accent, #8b3a2a); outline-offset: 2px; }
+.chalkie-link-x { font-size: 15px; line-height: 1; }
+@media print { .chalkie-link { display: none !important; } }
