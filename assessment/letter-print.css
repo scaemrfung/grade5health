@@ -1,5 +1,0 @@
-/* Family letter: print on two pages (letter, then return slip). Loaded by the letter page. */
-@media print{
- .worksheet-sheet.family-letter{height:auto!important;max-height:none!important;overflow:visible!important;display:block!important;break-inside:auto!important;page-break-inside:auto!important;break-after:auto!important;page-break-after:auto!important}
- .family-letter hr{break-after:page;page-break-after:always;border:0!important;margin:0!important}
-}

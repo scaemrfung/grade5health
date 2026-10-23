@@ -34,5 +34,6 @@ Printable unit packets are on the home page and each unit page (Print packet or 
   - `assessment/checklist/`: printable class checklist, one landscape page per unit, blank class list
   - `assessment/reassess/`: one second-chance task per unit
   - `assessment/alternate-task/`: for students without a signed Growth opt-in
-- **Family letter.** The letter uses opt-in consent (Education Act, in effect Sept 1, 2025): at least 30 calendar days' notice before Week 25. Check EIPS procedure with the principal before sending. `assessment/letter-print.css` lets the letter print on two pages, with the return slip on page 2.
-- **PDFs.** Teacher-key PDFs were regenerated from `/keys/` pages with faith notes off.
+- **No family letter.** The site no longer has a family letter page (removed Oct 2026 at Mr. Fung's request). Teacher notes say: confirm family opt-in through the school's consent process before Week 25 (Alberta: opt-in, at least 30 calendar days' notice).
+- **PDFs.** Teacher-key PDFs were regenerated from `/keys/` pages with faith notes off. The Growth student packet was regenerated from `/print/growth/` while unlocked.
+- **Curriculum wording.** Organizing ideas, guiding questions, learning outcomes, and quoted KUSP statements match LearnAlberta PDE5 (read Oct 22, 2026) word for word. Growth has two guiding questions (`extraQuestions`) and two outcomes (`extraOutcomes`). Fertilization and implantation (Grade 5 knowledge) are taught in Week 27.
