@@ -1,8 +1,8 @@
 (() => {
-  const STORAGE_KEY = "g5h-growth-unlock-v1";
+  const STORAGE_KEY = "g5h-growth-unlock-v2";
   // SHA-256 of the classroom password (courtesy lock — not server auth)
   const PASS_HASH =
-    "ec73439877864f41cc055a07121539abd8f519c4fa2a92ce5e87c02cc6fcc673";
+    "2b701e141bf08d4673f2cd0a333c6a7e06021510fdf7506a2d3356fda2972219";
   const BASE = "/grade5health";
 
   function path() {
@@ -104,6 +104,7 @@ html.g5h-growth-locked body{overflow:hidden}
     try {
       localStorage.setItem(STORAGE_KEY, PASS_HASH);
     } catch {}
+    syncPdfLinks();
     hide();
   }
 
@@ -121,6 +122,7 @@ html.g5h-growth-locked body{overflow:hidden}
   }
 
   function sync() {
+    syncPdfLinks();
     if (isLockedPath(path()) && !unlocked()) show();
     else hide();
   }
@@ -138,6 +140,20 @@ html.g5h-growth-locked body{overflow:hidden}
     wrap("replaceState");
     window.addEventListener("popstate", sync);
   }
+
+  // Growth PDF links stay hidden until this device is unlocked.
+  // (The PDF files themselves are encrypted with the classroom password.)
+  function syncPdfLinks() {
+    const de = document.documentElement;
+    if (!document.getElementById("g5h-growth-pdf-style")) {
+      const s = document.createElement("style");
+      s.id = "g5h-growth-pdf-style";
+      s.textContent = 'html:not(.g5h-growth-pdf-ok) a[href*="Growth-and-Development"][href$=".pdf"]{display:none!important}';
+      de.appendChild(s);
+    }
+    de.classList.toggle("g5h-growth-pdf-ok", unlocked());
+  }
+  syncPdfLinks();
 
   function boot() {
     patchHistory();
